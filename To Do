@@ -1,0 +1,12 @@
+need to backup & restore entries before upgrading sqlite db
+create app icon
+order event list by alpha
+include a theme?
+backgrounds/wallpapers
+versioning http://developer.android.com/tools/publishing/versioning.html
+make mins & seconds optional
+dont allow update if countdown target has been reached? (maybe)
+what should happen when a countdown is edited after the target date is reached?
+maximum number of events cannot exceed x
+get rid of robot icon from delete dialog
+when editing, title field should expand height to fit long titles

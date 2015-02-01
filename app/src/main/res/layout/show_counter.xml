@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:id="@+id/stopButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp" />
+
+    <TextView
+        style="@style/fontStyle01" android:text="@string/mins"
+        android:id="@+id/textMins"
+        android:layout_alignTop="@+id/textHour"
+        android:layout_toRightOf="@+id/stopButton"
+        android:layout_toEndOf="@+id/stopButton" />
+
+    <TextView
+        style="@style/fontStyle01" android:text="@string/secs"
+        android:id="@+id/textSecs"
+        android:layout_above="@+id/stopButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:minWidth="10dp" />
+
+    <TextView
+        style="@style/fontStyle01" android:text="@string/hours"
+        android:id="@+id/textHour"
+        android:minWidth="10dp"
+        android:layout_alignTop="@+id/textDays"
+        android:layout_alignLeft="@+id/stopButton"
+        android:layout_alignStart="@+id/stopButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textStartDate"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="34dp"
+        android:layout_toLeftOf="@+id/textSecs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        style="@style/fontStyle01" android:text="@string/days"
+        android:id="@+id/textDays"
+        android:maxWidth="10dp"
+        android:layout_above="@+id/stopButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/stopButton"
+        android:layout_toLeftOf="@+id/stopButton"
+        android:layout_alignTop="@+id/textSecs" />
+
+</RelativeLayout>

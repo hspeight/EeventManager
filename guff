@@ -1,0 +1,3 @@
+adb -s emulator-5554 shell
+sqlite3 /data/data/com.example.hector.myproj03/databases/events.db "select * from events"
+
