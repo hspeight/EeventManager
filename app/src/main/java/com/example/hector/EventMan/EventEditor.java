@@ -309,7 +309,7 @@ public class EventEditor extends ActionBarActivity implements OnClickListener {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_delete:
-                deleteEvent();
+               // deleteEvent();
                 return true;
             case R.id.action_settings:
                 //openSettings();
@@ -320,9 +320,13 @@ public class EventEditor extends ActionBarActivity implements OnClickListener {
 
     }
 
-    public boolean deleteEvent(){
+
+/*
+    public boolean deleteEvent(String RowID){
+
         //Toast.makeText(getApplicationContext(), "Delete clicked "  + rowID, Toast.LENGTH_SHORT).show();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+       // System.out.println("!!- here");
         builder.setTitle("Delete Event?")
                 .setIcon(R.drawable.ic_launcher)
                 .setMessage("Click OK to delete the event")
@@ -348,6 +352,7 @@ public class EventEditor extends ActionBarActivity implements OnClickListener {
 
         return true;
     }
+*/
     @Override
     public void onClick(View view) {
 

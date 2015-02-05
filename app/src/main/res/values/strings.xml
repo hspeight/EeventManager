@@ -11,6 +11,9 @@
     <string name="action_search">Search</string>
     <string name="action_add">Add</string>
     <string name="action_delete">Delete</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_OK">OK</string>
+    <string name="dialog_Sure">Sure you want to do this?</string>
     <string name="title_activity_event_manager">Event Manager</string>
     <string name="title_activity_event_editor">Event Editor</string>
 

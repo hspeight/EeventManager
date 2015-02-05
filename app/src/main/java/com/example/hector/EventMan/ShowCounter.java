@@ -38,7 +38,7 @@ public class ShowCounter extends ActionBarActivity {
         //final TextView textView2 = (TextView)findViewById(R.id.textView2);
         Button myButton;
 
-        String myDate = "2014-12-29 04:00:08 +0000";
+        String myDate = "2014-12-29 04:00:09 +0000";
         Date startDate = null;
         try {
             startDate = df.parse(myDate);

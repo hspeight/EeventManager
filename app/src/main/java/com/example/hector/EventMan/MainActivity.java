@@ -4,15 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.app.Notification;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.internal.widget.AdapterViewCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +41,7 @@ public class MainActivity extends ActionBarActivity {
     HashMap<String, List<String>> listDataChild;
     public String rowID []; // Array of _id column form database
     public ImageView bin = null;
+    public int binImageRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override   // collapse list
             public void onGroupExpand(int groupPosition) {
+                //setImageRowPosition(groupPosition);
                 if(groupPosition != previousItem )
                     expListView.collapseGroup(previousItem );
                 previousItem = groupPosition;
@@ -77,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-
+                //System.out.println("!!-  " + "soccl");
                 //String selected = ((TextView) v.findViewById(R.id.textViewRowID)).getText().toString();
                 Intent intent = new Intent(getBaseContext(), EventEditor.class);
                 intent.putExtra("ROW_ID",rowID[groupPosition]);
@@ -97,18 +104,42 @@ public class MainActivity extends ActionBarActivity {
                 return false;
             }
         });
-/*
-        bin = (ImageView)findViewById(R.id.imageViewBin);
-        bin.setOnItemClickListener(new View.OnClickListener(){
 
-            public void onite(View view) {
-                Toast.makeText(getApplicationContext(),
-                        "bin clicked", Toast.LENGTH_SHORT)
-                        .show();
-            }});
+
+
+/*
+        // Set a item click listener, and just Toast the clicked position
+        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "Delete" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageView childImage = (ImageView) findViewById(R.id.imageViewDelete);
+
+        childImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                   Toast.makeText(getApplicationContext(),  "Delete", Toast.LENGTH_SHORT)
+                          .show();
+            }
+
+        });
 */
+    }
+
+    public void makeToast(View v){
+       // System.out.println("!!-  tag is " + v.getTag().toString());
+       // Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
+       // deleteEvent(v.getTag().toString());
+        deleteEvent((int)v.getTag());
 
     }
+
+    //public void setImageRowPosition(int p){
+    //    System.out.println("!!-  " + p);
+    //}
 
     // method to add parent & child events
     public void setGroupParents() {
@@ -182,6 +213,39 @@ public class MainActivity extends ActionBarActivity {
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
+    }
+
+    public boolean deleteEvent(final int rowid){
+        System.out.println("!!- " + rowid);
+        //final Events myEvent = dbHandler.getMyEvent(rowID);
+
+        //Toast.makeText(getApplicationContext(), "Delete clicked "  + rowID, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Delete Event?")
+                .setIcon(R.drawable.ic_launcher)
+                .setMessage("Click OK to delete the event")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        boolean result = dbHandler.deleteEvent(rowID[rowid]);
+                        if (result) {
+                            Toast.makeText(getApplicationContext(), "Event Deleted", Toast.LENGTH_SHORT).show();
+                            //finish();
+                            onPause();; // call onpause so that on onresume can be called to refresh list
+                            onResume();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+        return true;
     }
 
 }
