@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-
+/*
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
@@ -89,7 +89,6 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(getBaseContext(), EventEditor.class);
                 intent.putExtra("ROW_ID",rowID[groupPosition]);
                 startActivity(intent);
-/*
                 Toast.makeText(
                         getApplicationContext(),
                         listDataHeader.get(groupPosition)
@@ -100,12 +99,10 @@ public class MainActivity extends ActionBarActivity {
                                 listDataHeader.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
-*/
                 return false;
             }
         });
-
-
+*/
 
 /*
         // Set a item click listener, and just Toast the clicked position
@@ -129,14 +126,25 @@ public class MainActivity extends ActionBarActivity {
 */
     }
 
-    public void makeToast(View v){
+    public void deleteIconClicked (View v){
        // System.out.println("!!-  tag is " + v.getTag().toString());
        // Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
        // deleteEvent(v.getTag().toString());
         deleteEvent((int)v.getTag());
 
     }
+    public void editIconClicked (View v){
 
+        Intent intent = new Intent(getBaseContext(), EventEditor.class);
+        intent.putExtra("ROW_ID",rowID[(int)v.getTag()]);
+        startActivity(intent);
+
+    }
+    public void playIconClicked (View v){
+
+        //deleteEvent((int)v.getTag());
+
+    }
     //public void setImageRowPosition(int p){
     //    System.out.println("!!-  " + p);
     //}

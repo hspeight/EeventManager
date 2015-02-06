@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageViewPlay"
         android:src="@drawable/ic_ic_action_play"
-        android:onClick="makeToast"
+        android:onClick="playIconClicked"
         android:minHeight="30dp"
         android:minWidth="30dp" />
 
@@ -35,7 +35,7 @@
         android:minWidth="30dp"
         android:minHeight="30dp"
         android:src="@drawable/ic_action_discard"
-        android:onClick="makeToast"
+        android:onClick="deleteIconClicked"
         android:layout_alignParentTop="false"
         android:layout_alignParentRight="true" />
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageViewEdit"
         android:src="@drawable/ic_action_edit"
-        android:onClick="makeToast"
+        android:onClick="editIconClicked"
         android:minWidth="30dp"
         android:minHeight="30dp"
         android:layout_toStartOf="@id/imageViewDelete"/>
